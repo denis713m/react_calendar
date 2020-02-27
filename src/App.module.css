@@ -1,0 +1,10 @@
+.container{
+  width:375px;
+  margin: 50px auto;
+  background: green;
+  position: relative;
+}
+
+*{
+  box-sizing: border-box;
+}

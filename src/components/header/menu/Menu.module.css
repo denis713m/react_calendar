@@ -1,0 +1,27 @@
+.container{
+    position: absolute;
+    top:100%;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0B3157;
+    height: 44px;
+    width: 100%;
+}
+.button{
+    border: 1px solid #E8E9EB50;
+    border-radius: 30px;
+    opacity: 0.5;
+    height: 30px;
+    color: #E8E9EB;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 9px;
+}
+.button + .button {
+    margin-left: 6px;
+}
