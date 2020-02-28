@@ -1,34 +1,19 @@
 import React from 'react';
 import styles from './Menu.module.css'
 
-/*class Menu extends React.Component {
-  render () {
-    return (
-      <div>
-        <div>
-          <p>This week</p>
-        </div>
-        <div>
-          <p>This month</p>
-        </div>
-      </div>
-    );
-  }
-}*/
-
-function Menu() {
+function Menu(props) {
 
   const showMonth = (b) =>{
-    this.props.showMonth(b);
+    props.showMonth(b);
   };
 
 
   return (
     <div className={styles.container}>
-      <div className={styles.button} onClick={() => {showMonth(true)}}>
+      <div className={styles.button} onClick={() => {showMonth(false)}}>
         This week
       </div>
-      <div className={styles.button} onClick={() => {showMonth(false)}}>
+      <div className={styles.button} onClick={() => {showMonth(true)}}>
         This month
       </div>
     </div>
