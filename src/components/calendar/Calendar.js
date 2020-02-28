@@ -18,13 +18,13 @@ function Calendar(props) {
     <div className={styles.dayName}>S</div>
 
     </div>
-            <WeeksList today={props.today} showMonth = {props.showMonth}/>
+            <WeeksList today={props.today} isShowMonth = {props.isShowMonth}/>
             </>
     )
 }
 
 Calendar.propTypes = {
-    showMonth: PropTypes.bool.isRequired
+    isShowMonth: PropTypes.bool.isRequired
 };
 
 

@@ -8,7 +8,7 @@ function WeeksList(props) {
             <Week today={props.today}/>
 
 
-            {(props.showMonth) ?
+            {(props.isShowMonth) ?
                 (
                     <>
                         <div className={styles.container}>
