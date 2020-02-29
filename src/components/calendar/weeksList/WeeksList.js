@@ -1,57 +1,30 @@
 import React from 'react'
-import styles from './WeeksList.module.css'
 import Week from "../week/Week";
 
 function WeeksList(props) {
+
+    const showMonth = () => {
+        const firstDate = props.today.clone().subtract((props.today.date() - 1), 'd');
+        const endDate = firstDate.clone().add((firstDate.daysInMonth() - 1), 'd');
+        const month = props.today.month();
+        const weeks = [];
+        while (firstDate.isSameOrBefore(endDate)) {
+            weeks.push(<Week key={firstDate.date()} today={firstDate.clone()} month={month}/>);
+            firstDate.add(7, 'd');
+        }
+        return weeks;
+    };
+
+
     return (
         <>
-            <Week today={props.today}/>
-
 
             {(props.isShowMonth) ?
                 (
-                    <>
-                        <div className={styles.container}>
-                            <div className={styles.day}>1</div>
-                            <div className={styles.day}>2</div>
-                            <div className={styles.day}>3</div>
-                            <div className={styles.day}>4</div>
-                            <div className={styles.day}>5</div>
-                            <div className={styles.day}>6</div>
-                            <div className={styles.day}>7</div>
-                        </div>
-                        <div className={styles.container}>
-                            <div className={styles.day}>1</div>
-                            <div className={styles.day}>2</div>
-                            <div className={styles.day}>3</div>
-                            <div className={styles.day}>4</div>
-                            <div className={styles.day}>5</div>
-                            <div className={styles.day}>6</div>
-                            <div className={styles.day}>7</div>
-                        </div>
+                    <>{showMonth()}</>
 
-                        <div className={styles.container}>
-                            <div className={styles.day}>1</div>
-                            <div className={styles.day}>2</div>
-                            <div className={styles.day}>3</div>
-                            <div className={styles.day}>4</div>
-                            <div className={styles.day}>5</div>
-                            <div className={styles.day}>6</div>
-                            <div className={styles.day}>7</div>
-                        </div>
-
-                        <div className={styles.container}>
-                            <div className={styles.day}>1</div>
-                            <div className={styles.day}>2</div>
-                            <div className={styles.day}>3</div>
-                            <div className={styles.day}>4</div>
-                            <div className={styles.day}>5</div>
-                            <div className={styles.day}>6</div>
-                            <div className={styles.day}>7</div>
-                        </div>
-                    </>
                 ) :
-                null}
+                <Week today={props.today} isShowWeek={true}/>}
 
 
         </>

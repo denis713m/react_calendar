@@ -6,16 +6,26 @@ function Week(props) {
 
     const today = props.today;
     today.subtract((today.day()), "d");
+    const days = [];
+    if (props.isShowWeek) {
+        for (let i = 0; i < 7; i++) {
+            days.push(<div key={`day${i}`} className={styles.day}>{today.date()}</div>);
+            today.add(1, 'd');
+        }
+    } else {
+        for (let i = 0; i < 7; i++) {
+            days.push(<div key={`day${i}`} className={styles.day}>{
+                (today.month() === props.month) ?
+                    today.date() :
+                    ''
+            }</div>);
+            today.add(1, 'd');
+        }
+    }
 
-    return(
+    return (
         <div className={styles.container}>
-            <div className={styles.day}>{today.date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
-            <div className={styles.day}>{today.add(1, "d").date()}</div>
+            {days}
         </div>
     )
 
