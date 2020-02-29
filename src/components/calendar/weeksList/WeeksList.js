@@ -4,12 +4,12 @@ import Week from "../week/Week";
 function WeeksList(props) {
 
     const showMonth = () => {
-        const firstDate = props.today.clone().subtract((props.today.date() - 1), 'd');
+        const firstDate = props.baseDate.clone().subtract((props.baseDate.date() - 1), 'd');
         const endDate = firstDate.clone().add((firstDate.daysInMonth() - 1), 'd');
-        const month = props.today.month();
+        const month = props.baseDate.month();
         const weeks = [];
         while (firstDate.isSameOrBefore(endDate)) {
-            weeks.push(<Week key={firstDate.date()} today={firstDate.clone()} month={month}/>);
+            weeks.push(<Week key={firstDate.date()} baseDate={firstDate.clone()} month={month} currentDate={props.currentDate}/>);
             firstDate.add(7, 'd');
         }
         return weeks;
@@ -24,7 +24,7 @@ function WeeksList(props) {
                     <>{showMonth()}</>
 
                 ) :
-                <Week today={props.today} isShowWeek={true}/>}
+                <Week baseDate={props.baseDate} isShowWeek={true} currentDate={props.currentDate}/>}
 
 
         </>

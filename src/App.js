@@ -10,7 +10,8 @@ class App extends React.Component {
         this.state = {
             isMenuShown: false,
             isShowMonth: true,
-            today: moment(),
+            baseDate: moment(),
+            currentDate: moment(),
         };
     }
 
@@ -24,7 +25,7 @@ class App extends React.Component {
         this.setState({
             isMenuShown: !this.state.isMenuShown,
             isShowMonth: b,
-            today: moment()
+            baseDate: moment(),
         });
     };
 
@@ -32,14 +33,13 @@ class App extends React.Component {
         (this.state.isShowMonth) ?
             this.setState({
                 isMenuShown: false,
-                today: this.state.today.subtract(1, 'M')
+                baseDate: this.state.baseDate.subtract(1, 'M')
             })
             :
             this.setState({
                 isMenuShown: false,
-                today: this.state.today.subtract(6, 'd')
+                baseDate: this.state.baseDate.subtract(6, 'd')
             });
-        console.log(this.state.today.date());
     };
 
 
@@ -47,23 +47,23 @@ class App extends React.Component {
         (this.state.isShowMonth) ?
             this.setState({
                 isMenuShown: false,
-                today: this.state.today.add(1, 'M')
+                baseDate: this.state.baseDate.add(1, 'M')
             })
             :
             this.setState({
                 isMenuShown: false,
-                today: this.state.today.add(6, 'd')
+                baseDate: this.state.baseDate.add(6, 'd')
             });
     };
 
     render() {
         return (
             <div className={styles.container}>
-                <Header today={this.state.today} ismenu={this.state.isMenuShown}
+                <Header baseDate={this.state.baseDate} ismenu={this.state.isMenuShown}
                         isShowMonth={this.state.isShowMonth} showMenu={this.showMenu}
                         showMonth={this.showMonth}
                         prev={this.prev} next={this.next}/>
-                <Calendar today={this.state.today}
+                <Calendar baseDate={this.state.baseDate} currentDate={this.state.currentDate}
                           isShowMonth={this.state.isShowMonth}/>
 
             </div>

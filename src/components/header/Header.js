@@ -23,14 +23,14 @@ class Header extends React.Component {
   };
 
   prevNextMonthName = () => {
-    const date = this.props.today.clone();
+    const date = this.props.baseDate.clone();
     return [date.subtract(1, 'M').format('MMM'), date.add(2, 'M')
                                                      .format('MMM')];
   };
 
   calendarName = () => {
-    const dateStart = this.props.today.clone()
-                          .subtract(this.props.today.day(), 'd');
+    const dateStart = this.props.baseDate.clone()
+                          .subtract(this.props.baseDate.day(), 'd');
     const dateEnd = dateStart.clone().add(6, 'd');
     if (dateStart.month() === dateEnd.month()) {
       return `${dateStart.format('MMM DD')}-${dateEnd.format('DD')}`;
@@ -54,7 +54,7 @@ class Header extends React.Component {
           </div>
           <div className={styles.thisMonthWeek}>
             {(this.props.isShowMonth) ?
-             this.props.today.format('MMMM').toUpperCase() :
+             this.props.baseDate.format('MMMM').toUpperCase() :
              this.calendarName()
             }
             {

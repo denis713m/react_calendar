@@ -4,22 +4,37 @@ import styles from './Week.module.css';
 
 function Week(props) {
 
-    const today = props.today;
-    today.subtract((today.day()), "d");
+    const checkCurrent = function(date)  {
+        if (date.isSame(props.currentDate, 'day')) {
+            return (<div className={styles.currentDay}/>);
+        }
+            else{
+            return null;
+        }
+
+    };
+
+    const baseDate = props.baseDate.clone();
+    baseDate.subtract((baseDate.day()), "d");
     const days = [];
     if (props.isShowWeek) {
         for (let i = 0; i < 7; i++) {
-            days.push(<div key={`day${i}`} className={styles.day}>{today.date()}</div>);
-            today.add(1, 'd');
+            days.push(<div key={`day${i}`} className={styles.day}>
+                {baseDate.date()}
+                {checkCurrent(baseDate)}
+            </div>);
+            baseDate.add(1, 'd');
         }
     } else {
         for (let i = 0; i < 7; i++) {
             days.push(<div key={`day${i}`} className={styles.day}>{
-                (today.month() === props.month) ?
-                    today.date() :
+                (baseDate.month() === props.month) ?
+                    baseDate.date() :
                     ''
-            }</div>);
-            today.add(1, 'd');
+            }
+                {checkCurrent(baseDate)}
+            </div>);
+            baseDate.add(1, 'd');
         }
     }
 
