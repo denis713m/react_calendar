@@ -1,8 +1,7 @@
 .container{
   width:375px;
   margin: 50px auto;
-  background: green;
-  position: relative;
+  background-color: #FFFFFF;
 }
 
 *{

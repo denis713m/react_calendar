@@ -9,24 +9,21 @@ function WeeksList(props) {
         const month = props.baseDate.month();
         const weeks = [];
         while (firstDate.isSameOrBefore(endDate)) {
-            weeks.push(<Week key={firstDate.date()} baseDate={firstDate.clone()} month={month} currentDate={props.currentDate}/>);
+            weeks.push(<Week key={firstDate.date()} baseDate={firstDate.clone()}
+                             month={month} currentDate={props.currentDate} events={props.events} isShowMonth={true}/>);
             firstDate.add(7, 'd');
         }
         return weeks;
     };
 
-
     return (
         <>
-
             {(props.isShowMonth) ?
                 (
                     <>{showMonth()}</>
-
                 ) :
-                <Week baseDate={props.baseDate} isShowWeek={true} currentDate={props.currentDate}/>}
-
-
+                <Week baseDate={props.baseDate} isShowMonth={false} currentDate={props.currentDate}
+                      events={props.events}/>}
         </>
     )
 }

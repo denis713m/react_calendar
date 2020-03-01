@@ -4,6 +4,105 @@ import Header from './components/header/Header.js';
 import Calendar from './components/calendar/Calendar';
 import moment from 'moment';
 
+const events = [{
+    "date": "2020.01.30",
+    "events": [
+        {
+            "name": "Event Name",
+            "body": "Event Body",
+            "time": "10:15",
+            "isIn": false
+        },
+        {
+            "name": "Event Name",
+            "body": "Event Body",
+            "time": "18:47",
+            "isIn": true
+        }
+    ]
+},
+
+    {
+        "date": "2020.02.27",
+        "events": [
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "10:15",
+                "isIn": false
+            },
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "18:47",
+                "isIn": true
+            },
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "16:00",
+                "isIn": true
+            }
+        ]
+    },
+
+    {
+        "date": "2020.03.04",
+        "events": [
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "12:00",
+                "isIn": false
+            }
+        ]
+    },
+    {
+        "date": "2020.03.12",
+        "events": [
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "10:15",
+                "isIn": false
+            },
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "16:00",
+                "isIn": true
+            }
+        ]
+    }
+    ,
+
+    {
+        "date": "2020.03.14",
+        "events": [
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "10:15",
+                "isIn": false
+            },
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "18:47",
+                "isIn": true
+            },
+            {
+                "name": "Event Name",
+                "body": "Event Body",
+                "time": "16:00",
+                "isIn": true
+            }
+        ]
+    }
+];
+
+
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +111,7 @@ class App extends React.Component {
             isShowMonth: true,
             baseDate: moment(),
             currentDate: moment(),
+            events: events,
         };
     }
 
@@ -64,7 +164,7 @@ class App extends React.Component {
                         showMonth={this.showMonth}
                         prev={this.prev} next={this.next}/>
                 <Calendar baseDate={this.state.baseDate} currentDate={this.state.currentDate}
-                          isShowMonth={this.state.isShowMonth}/>
+                          isShowMonth={this.state.isShowMonth} events={this.state.events}/>
 
             </div>
 

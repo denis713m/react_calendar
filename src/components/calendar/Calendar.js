@@ -1,7 +1,6 @@
 import React from 'react'
 import WeeksList from './weeksList/WeeksList'
 import styles from './Calendar.module.css'
-import PropTypes from 'prop-types';
 
 function Calendar(props) {
 
@@ -18,14 +17,10 @@ function Calendar(props) {
     <div className={styles.dayName}>S</div>
 
     </div>
-            <WeeksList baseDate={props.baseDate} isShowMonth = {props.isShowMonth}/>
+            <WeeksList baseDate={props.baseDate} isShowMonth = {props.isShowMonth} events={props.events}/>
             </>
     )
 }
-
-Calendar.propTypes = {
-    isShowMonth: PropTypes.bool.isRequired
-};
 
 
 export default Calendar;
