@@ -1,0 +1,27 @@
+@import "../../styles/colors";
+@import "../../styles/utils";
+@import "../../styles/fonts";
+
+.container{
+    position: relative;
+}
+.navContainer{
+    @extend .monteserrat, .center-space-between;
+    background: $primary-color;
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    font-weight: 800;
+
+}
+.prevnext{
+    @extend .monteserrat;
+    color: $second-color;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.thisMonthWeek{
+    @extend .center-content;
+}

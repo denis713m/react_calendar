@@ -16,15 +16,6 @@ function Day(props) {
         }
     };
 
-    const checkCurrent = () => {
-        if ((props.baseDate).isSame(props.currentDate, 'day')) {
-            return (<div className={styles.currentDay}/>);
-        } else {
-            return null;
-        }
-
-    };
-
     const addEvent = () => {
         const events = [];
 
@@ -45,9 +36,8 @@ function Day(props) {
                 let i = 0;
                 event.events.forEach((ev) => {
                     if (i < 3) {
-                        const className = classNames({
-                            [styles.event]: true,
-                            [styles.eventWithout]: ((props.baseDate).isBefore(props.currentDate)) || !ev.isIn
+                        const className = classNames([styles.event],{
+                            [styles.eventWithout]: ((props.baseDate).isBefore(props.currentDate, 'day')) || !ev.isIn
                         });
 
                         events.push(<div key={`ev${i++}`} className={className} style={{width: `${width}px`}}/>);
@@ -62,11 +52,18 @@ function Day(props) {
         );
     };
 
+    const selectDay = (e) =>{
+        (e.target.innerText === '') ? props.select(null):
+         props.select(props.baseDate.clone());
+    };
+
     return (
         <>
-            <div className={styles.day}>
+            <div  className={classNames([styles.day], {
+                [styles.daySelected]:(props.baseDate).isSame(props.selectedDay, 'day')},
+                {[styles.currentDay]:(props.baseDate).isSame(props.currentDate, 'day')}
+            )} onClick={selectDay}>
                 {dateNumber()}
-                {checkCurrent()}
                 {(!props.isShowMonth) ?
                     addEvent() :
                     ((props.baseDate.month() === props.month) ?

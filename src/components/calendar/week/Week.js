@@ -9,12 +9,19 @@ function Week(props) {
     baseDate.subtract((baseDate.day()), "d");
     const days = [];
 
+    const selectDay = (date) =>{
+
+        props.select(date);
+    };
+
     for (let i = 0; i < 7; i++) {
         days.push(<Day key={`day${i}`} baseDate={baseDate.clone()} currentDate={props.currentDate} month={props.month}
-                       isShowMonth={props.isShowMonth} events={props.events}
+                       isShowMonth={props.isShowMonth} events={props.events} selectedDay={props.selectedDay} select = {selectDay}
         />);
         baseDate.add(1, 'd');
     }
+
+
 
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import WeeksList from './weeksList/WeeksList'
-import styles from './Calendar.module.css'
+import styles from './Calendar.module.scss'
 
 function Calendar(props) {
 

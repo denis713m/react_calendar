@@ -1,24 +1,25 @@
+@import "../../../styles/colors";
+@import "../../../styles/utils";
+@import "../../../styles/fonts";
+
 .container{
+    @extend .center-content;
     position: absolute;
     z-index: 10;
     top:100%;
     left:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0B3157;
+    background: $primary-color;
     height: 44px;
     width: 100%;
 }
 .button{
+    @extend .monteserrat;
     border: 1px solid #E8E9EB50;
     border-radius: 30px;
     opacity: 0.5;
     height: 30px;
-    color: #E8E9EB;
-    font-family: Montserrat, sans-serif;
+    color: $text-color-main;
     font-size: 14px;
-    font-weight: 400;
     line-height: 30px;
     text-align: center;
     padding: 0 9px;

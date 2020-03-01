@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import { mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import Menu from './menu/Menu.js';
@@ -41,7 +41,6 @@ class Header extends React.Component {
   };
 
   render () {
-
     return (
       <div className={styles.container}>
         <div className={styles.navContainer}>
