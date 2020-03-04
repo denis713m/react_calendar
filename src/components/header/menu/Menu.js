@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Menu.module.scss'
+import styles from './Menu.module.sass';
+import PropTypes from 'prop-types';
 
 function Menu(props) {
 
@@ -18,6 +19,10 @@ function Menu(props) {
       </div>
     </div>
   );
+}
+
+Menu.propTypes = {
+    showMonth: PropTypes.func.isRequired
 }
 
 export default Menu;

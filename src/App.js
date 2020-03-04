@@ -123,7 +123,7 @@ class App extends React.Component {
 
     showMonth = (b) => {
         this.setState({
-            isMenuShown: !this.state.isMenuShown,
+            isMenuShown: false,
             isShowMonth: b,
             baseDate: moment(),
         });
@@ -164,7 +164,9 @@ class App extends React.Component {
                         showMonth={this.showMonth}
                         prev={this.prev} next={this.next}/>
                 <Calendar baseDate={this.state.baseDate} currentDate={this.state.currentDate}
-                          isShowMonth={this.state.isShowMonth} events={this.state.events}/>
+                          isShowMonth={this.state.isShowMonth} events={this.state.events}
+
+                />
 
             </div>
 

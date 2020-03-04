@@ -1,5 +1,7 @@
 import React from 'react'
 import Week from "../week/Week";
+import PropTypes from 'prop-types';
+import momentPropTypes from 'react-moment-proptypes';
 
 class WeeksList  extends React.Component{
 
@@ -17,11 +19,12 @@ class WeeksList  extends React.Component{
     showMonth = () => {
         const firstDate = this.props.baseDate.clone().subtract((this.props.baseDate.date() - 1), 'd');
         const endDate = firstDate.clone().add((firstDate.daysInMonth() - 1), 'd');
+        endDate.add((6-endDate.day()), 'day');
         const month = this.props.baseDate.month();
         const weeks = [];
         while (firstDate.isSameOrBefore(endDate)) {
-            weeks.push(<Week key={firstDate.date()} baseDate={firstDate.clone()}
-                             month={month} currentDate={this.props.currentDate} events={this.props.events} isShowMonth={true}
+            weeks.push(<Week key={firstDate.format('YYYY-MM-DD')} baseDate={firstDate.clone()}
+                             month={month} currentDate={this.props.currentDate} events={this.props.events}
             selectedDay={this.state.selectedDay} select = {this.selectDay}/>);
             firstDate.add(7, 'd');
         }
@@ -43,5 +46,17 @@ class WeeksList  extends React.Component{
 
 
 }
+
+WeeksList.propTypes = {
+    baseDate: momentPropTypes.momentObj.isRequired,
+    currentDate: momentPropTypes.momentObj.isRequired,
+    events: PropTypes.array.isRequired,
+
+};
+WeeksList.defaultProps = {
+    isShowMonth: true,
+};
+
+
 
 export default WeeksList;

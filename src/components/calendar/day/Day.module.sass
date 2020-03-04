@@ -1,0 +1,35 @@
+@import "../../../styles/allcolors"
+@import "../../../styles/_fonts"
+@import "../../../styles/_utils"
+
+.day
+  @extend .center-content, .monteserrat
+  position: relative
+  color: $primary-color
+  width: 40px
+  height: 40px
+  border-radius: 4px
+
+.daySelected
+  color: $text-color-main
+  background-color: $primary-color
+
+.currentDay
+  color: $current-day-color
+
+.eventContainer
+  @extend .center-content
+  position: absolute
+  top: 31px
+  left: 8px
+
+.event
+  background-color: $second-color
+  border-radius: 6px
+  height: 3px
+  margin-right: 2px
+
+
+.eventWithout
+  background-color: $event-past-color
+
