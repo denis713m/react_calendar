@@ -156,6 +156,15 @@ class App extends React.Component {
             });
     };
 
+    calendarClick = () => {
+        if(this.state.isMenuShown){
+            this.setState({
+                isMenuShown: false
+            })
+        }
+
+    };
+
     render() {
         return (
             <div className={styles.container}>
@@ -164,7 +173,7 @@ class App extends React.Component {
                         showMonth={this.showMonth}
                         prev={this.prev} next={this.next}/>
                 <Calendar baseDate={this.state.baseDate} currentDate={this.state.currentDate}
-                          isShowMonth={this.state.isShowMonth} events={this.state.events}
+                          isShowMonth={this.state.isShowMonth} events={this.state.events} calendarClick={this.calendarClick}
 
                 />
 

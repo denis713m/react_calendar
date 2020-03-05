@@ -4,6 +4,7 @@ import moment from "moment";
 import classNames from 'classname'
 import PropTypes  from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes'
+import {dateError, monthError, timeError} from "../../../utils";
 
 function Day(props) {
 
@@ -16,6 +17,7 @@ function Day(props) {
             return props.baseDate.date();
         }
     };
+
 
     const addEvent = () => {
         const events = [];
@@ -81,19 +83,19 @@ function Day(props) {
 Day.propTypes = {
     baseDate: momentPropTypes.momentObj.isRequired,
     currentDate: momentPropTypes.momentObj.isRequired,
-    month: function(props, propName, componentName) {
-        if (props.isShowMonth) {
-            if(!(propName in props)){
-                return new Error(`Missing prop month(Number.type)`);
-            }
-            if(!Number.isInteger(props[propName])) return new Error(`Failed prop type: Invalid input type: ${propName} of type ${typeof props[propName]} supplied to ${componentName}, expected Integer.`);
-            if (Number(props[propName]) < 0 || Number(props[propName] >11)) return new Error(`Prop month should be in interval [0...11]`);
-
-
-        }
-    },
+    month: monthError,
     isShowMonth: PropTypes.bool.isRequired,
-    events: PropTypes.array.isRequired,
+    events: PropTypes.arrayOf(PropTypes.shape({
+        date: dateError,
+        events: PropTypes.arrayOf(PropTypes.shape({
+                name: PropTypes.string,
+                body: PropTypes.string,
+                time: timeError,
+                isIn: PropTypes.bool,
+            }
+            )
+        )
+    })).isRequired,
     selectedDay: momentPropTypes.momentObj,
     select:PropTypes.func.isRequired
 

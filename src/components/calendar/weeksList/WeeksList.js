@@ -2,6 +2,7 @@ import React from 'react'
 import Week from "../week/Week";
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
+import {dateError, timeError} from "../../../utils";
 
 class WeeksList  extends React.Component{
 
@@ -13,7 +14,8 @@ class WeeksList  extends React.Component{
     }
 
     selectDay = (date) =>{
-      this.setState({selectedDay: date})
+      this.setState({selectedDay: date});
+      this.props.calendarClick();
     };
 
     showMonth = () => {
@@ -50,7 +52,18 @@ class WeeksList  extends React.Component{
 WeeksList.propTypes = {
     baseDate: momentPropTypes.momentObj.isRequired,
     currentDate: momentPropTypes.momentObj.isRequired,
-    events: PropTypes.array.isRequired,
+    events: PropTypes.arrayOf(PropTypes.shape({
+        date: dateError,
+        events: PropTypes.arrayOf(PropTypes.shape({
+                name: PropTypes.string,
+                body: PropTypes.string,
+                time: timeError,
+                isIn: PropTypes.bool,
+            }
+            )
+        )
+    })).isRequired,
+    calendarClick:PropTypes.func.isRequired,
 
 };
 WeeksList.defaultProps = {
